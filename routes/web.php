@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('state/fungsi_tambahan', 'StateController@fungsi_tambahan');
 Route::resource('state', 'StateController');

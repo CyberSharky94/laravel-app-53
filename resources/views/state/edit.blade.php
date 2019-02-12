@@ -2,7 +2,7 @@
 
 @section('content_body')
     
-    <form class="form-horizontal" method="POST" action="{{ action('StateController@store') }}">
+    <form class="form-horizontal" method="POST" action="{{ action('StateController@update', $state->id) }}">
       
       {{-- url('URI') --}}
       {{-- action('ControllerName@function') --}}
@@ -10,6 +10,7 @@
       {{-- NOTE: refer php artisan route:list --}}
 
         {{ csrf_field() }}
+        {{ method_field('PATCH') }}
         <fieldset>
         
         <!-- Form Name -->
@@ -19,7 +20,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="state_name">State Name</label>  
           <div class="col-md-4">
-          <input id="state_name" name="state_name" type="text" placeholder="State Name" class="form-control input-md" required="">
+          <input id="state_name" name="state_name" type="text" placeholder="State Name" class="form-control input-md" required="" value="{{ $state->state_name }}">
             
           </div>
         </div>
@@ -28,7 +29,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="state_abbr">State Abbreviation</label>  
           <div class="col-md-4">
-          <input id="state_abbr" name="state_abbr" type="text" placeholder="State Abbreviation" class="form-control input-md" required="">
+          <input id="state_abbr" name="state_abbr" type="text" placeholder="State Abbreviation" class="form-control input-md" required="" value="{{ $state->state_abbr }}">
             
           </div>
         </div>

@@ -166,6 +166,8 @@ return [
         /*
          * Package Service Providers...
          */
+        // HTML Facede Provider (require "laravel/collective/html : ~5.0" in composer.json)
+        // Collective\Html\HtmlServiceProvider::class,
 
         //
 
@@ -226,6 +228,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Form Helpers Facade (require "laravel/collective/html : ~5.0" in composer.json)
+        // 'Html' => Collective\Html\HtmlFacade::class,
+        // 'Form' => Collective\Html\FormFacade::class,
     ],
 
 ];
