@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\State;
+use Validator;
 
 class StateController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class StateController extends Controller
      */
     public function index()
     {
-        $state = State::all();
+        //$state = State::all();
+        $state = State::paginate(5);
+
 
         return view('state.index', compact('state'));
     }
@@ -37,6 +45,32 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation Process
+        // NOTE: Must include "use Validator"
+        // $validator = Validator::make($request, $rules, $custom_message);
+        
+        // Note: Another rules that can be applied: required|email|max:100|string|numeric
+
+        $rules = [
+            'state_name' => 'required',
+            'state_abbr' => 'required',
+        ];
+
+        $custom_message = [
+            'required' => 'Plese enter :attribute field',
+            // 'email' => 'Email input need to be filled',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        // $validator = Validator::make($request->all(), $rules, $custom_message);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            return back()->with('errors', $errors)->withInput();
+        }
+
+        // END: Validation Process
+        
         $state = new State();
 
         $state->state_name = $request->get('state_name');

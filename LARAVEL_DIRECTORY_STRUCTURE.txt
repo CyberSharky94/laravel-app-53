@@ -1,0 +1,13 @@
+[LARAVEL MVC DIRECTORY STRUCTURE]
+-app
+--Http
+---Controllers
+----(Controller Files)
+
+-app
+--(Model Files)
+
+
+-resources
+--views
+---(Blade View Files)

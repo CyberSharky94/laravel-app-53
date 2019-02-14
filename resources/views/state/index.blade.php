@@ -1,4 +1,4 @@
-@extends('layouts.content')
+@extends('admin')
 
 @section('content_body')
 
@@ -38,9 +38,9 @@
             <th>Action</th>
         </tr>
 
-        @foreach ($state as $st)
+        @foreach ($state as $key => $st)
             <tr>
-                <td>{{ $st->id }}</td>
+                <td>{{$key+1 }}</td>
                 <td>{{ $st->state_name }}</td>
                 <td>{{ $st->state_abbr }}</td>
                 <td>
@@ -59,5 +59,21 @@
             </tr>
         @endforeach
     </table>
+
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="dataTables_info" id="example2_info" 
+            role="status" aria-live="polite">
+                Showing 1 to {{count($state)}} of 
+                {{count($state)}} entries
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers" 
+            id="example2_paginate">
+                {{ $state->links() }}
+            </div>
+        </div>
+    </div>
 
 @endsection
