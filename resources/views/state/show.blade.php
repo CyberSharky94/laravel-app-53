@@ -1,4 +1,4 @@
-@extends('layouts.content')
+@extends('admin')
 
 @section('content_body')
 
@@ -26,6 +26,7 @@
             <td>{{ $state->updated_at }}</td>
         </tr>
     </table>
+    <br>
 
     <div>
         <button class="btn btn-default" type="button" onclick="window.location.href='{{ route('state.index') }}'">Back</button>

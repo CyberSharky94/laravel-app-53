@@ -179,7 +179,7 @@ desired effect
               <!-- The user image in the navbar-->
             <img src="{{ asset('/AdminLTE/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{{ Auth::User()->name }}</span>
+              <span class="hidden-xs">{{ (!empty(Auth::User()->name))?Auth::User()->name:"" }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -187,7 +187,7 @@ desired effect
               <img src="{{ asset('/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
-                    {{ Auth::User()->name }}
+                    {{ (!empty(Auth::User()->name))?Auth::User()->name:"" }}
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -209,7 +209,7 @@ desired effect
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="{{ route('profile.create') }}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit()" class="btn btn-default btn-flat">Sign out</a>
@@ -249,7 +249,33 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
 
+      <!-- Default box -->
+    <div class="box">
+
+        {{-- <div class="box-header with-border"> --}}
+
+            {{-- <h3 class="box-title">State Details</h3> --}}
+            {{-- <legend>State Details</legend> --}}
+
+        {{-- </div> --}}
+        <!-- /.box-header -->
+
+        <div class="box-body">
+            
             @yield('content_body')
+
+        </div>
+        <!-- /.box-body -->
+
+        {{-- <div class="box-footer">
+            <button class="btn btn-default" type="button" onclick="window.location.href='{{ route('state.index') }}'">Back</button>
+        </div> --}}
+        <!-- /.box-footer-->
+
+    </div>
+    <!-- /.box -->
+
+            
 
     </section>
     <!-- /.content -->

@@ -9,7 +9,7 @@
             <img src="{{ asset('/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>{{ Auth::User()->name }}</p>
+              <p>{{ (!empty(Auth::User()->name))?Auth::User()->name:"" }}</p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

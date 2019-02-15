@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\State;
 use Validator;
+use PDF;
+use Excel;
 
 class StateController extends Controller
 {
@@ -154,5 +156,26 @@ class StateController extends Controller
     public function fungsi_tambahan()
     {
         echo 'Fungsi Tambahan';
+    }
+
+    public function exportPDF(){
+
+        $state = State::all();
+
+        $pdf = PDF::loadView('state.pdf',['state'=>$state]);
+
+        return $pdf->download('list_state.pdf');
+    }
+
+    public function exportExcel(){
+
+        $state = State::all('id','state_name','state_abbr');
+        $tarikh= "";
+
+        Excel::create('State Data',function($excel)use($state,$tarikh){
+            $excel->sheet('State',function($sheet)use($state){
+                $sheet->fromArray($state);
+            });
+        })->download('xlsx');
     }
 }

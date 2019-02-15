@@ -28,7 +28,25 @@
         <a href="{{ action('StateController@create') }}" class="btn btn-primary">
             Add State
         </a>
-    </div><br>
+
+        {{-- get --}}
+        <a href="{{ action('StateController@exportPDF') }}" class="btn btn-primary">
+           Export PDF
+        </a>
+
+        <a href="{{ action('StateController@exportExcel') }}" class="btn btn-primary">
+                Export EXCEL
+        </a>
+
+        {{-- post
+        <form method="POST" action="{{ action('StateController@exportPDF') }}">
+        {{ csrf_field() }}
+         <button type="submit">
+             Export PDF POST
+         </button>
+        </form> --}}
+    </div>
+    <br>
 
     <table class="table table-bordered">
         <tr>
@@ -44,17 +62,16 @@
                 <td>{{ $st->state_name }}</td>
                 <td>{{ $st->state_abbr }}</td>
                 <td>
-                    <a href="{{ action('StateController@show', $st->id) }}" class="btn btn-primary">View</a>
-                    <a href="{{ action('StateController@edit', $st->id) }}" class="btn btn-success">Update</a>
-
-<form method="POST" action="{{ action('StateController@destroy', $st->id) }}" onsubmit="return confirm('Confirm delete {{ $st->state_name }}?');">
-
-    {{ csrf_field() }}
-    {{ method_field('DELETE') }}
-    
-    <button class="btn btn-danger">Delete</button>
-    
-</form>
+                    <form method="POST" action="{{ action('StateController@destroy', $st->id) }}" onsubmit="return confirm('Confirm delete {{ $st->state_name }}?');">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        
+                        <a href="{{ action('StateController@show', $st->id) }}" class="btn btn-primary">View</a>
+                        <a href="{{ action('StateController@edit', $st->id) }}" class="btn btn-success">Update</a>
+                        
+                        <button class="btn btn-danger">Delete</button>
+                        
+                    </form> 
                 </td>
             </tr>
         @endforeach

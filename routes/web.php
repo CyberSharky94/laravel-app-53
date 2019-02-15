@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +26,20 @@ Route::get('state/fungsi_tambahan', 'StateController@fungsi_tambahan');
 
 
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('state/pdf', 'StateController@exportPDF');
+    Route::get('state/excel', 'StateController@exportExcel');
+
     Route::resource('state', 'StateController');
+
+    Route::resource('profile', 'ProfileController');
 
     Route::get('/admin', function () {
         return view('admin');
     });
+
+    Route::get('/email','EmailController@index');
+    Route::get('/email/sent','EmailController@sent_email');
+    Route::get('/email/sent_attacg','EmailController@sent_email_attach');
+
 });
