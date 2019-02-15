@@ -16,11 +16,14 @@ This project is a sample system created during Laravel Programming Workshop at C
 1. Open terminal
 2. Update Composer in project directory using following command:
 <pre>composer update</pre>
-3. Duplicate .env.example file. Rename it to .env
-4. Setting .env file according to your system environment.
-5. Generate APP_KEY using following command:
+3. Create a database. (if not exist)
+4. Duplicate .env.example file. Rename it to .env
+5. Setting .env file according to your system environment.
+6. Run migration using following command:
+<pre>php artisan migrate</pre>
+7. Generate APP_KEY using following command:
 <pre>php artisan key:generate</pre>
-6. Setup complete. Try to run the Laravel project using following command:
+8. Setup complete. Try to run the Laravel project using following command:
 <pre>php artisan serve</pre>
 
 ## About Laravel
