@@ -11,6 +11,18 @@
 
 This project is a sample system created during Laravel Programming Workshop at CREaTE JKR
 
+## How to Install
+
+1. Open terminal
+2. Update Composer in project directory using following command:
+<pre>composer update</pre>
+3. Duplicate .env.example file. Rename it to .env
+4. Setting .env file according to your system environment.
+5. Generate APP_KEY using following command:
+<pre>php artisan key:generate</pre>
+6. Setup complete. Try to run the Laravel project using following command:
+<pre>php artisan serve</pre>
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
